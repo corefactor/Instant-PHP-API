@@ -21,11 +21,19 @@ class ApiResponse {
 		
 	}
 	
-	public function get() {
+	public function get($callback = null) {
 		
 		if ($this->__response_type == 'JSON') {
 				
-			return json_encode($this->__response_object);
+			if (!is_null($callback)) {	
+				
+				return $callback . '(' . json_encode($this->__response_object) . ' ) ';
+				
+			} else {
+				
+				return json_encode($this->__response_object);
+				
+			}
 			
 		}
 		

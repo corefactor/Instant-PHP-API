@@ -47,7 +47,15 @@
 		# LOAD THE REQUESTED API MODULE
 		include(API_MODULE);
 		
-		echo $ApiResponse->get();
+		if (isset($_GET['jsoncallback'])) {
+		
+			echo $ApiResponse->get($_GET['jsoncallback']);
+			
+		} else {
+		
+			echo $ApiResponse->get();
+			
+		}
 					
 	} else {
 		
