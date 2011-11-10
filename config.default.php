@@ -1,7 +1,7 @@
 <?php
 
 define('APIS_FOLDER', '../apis');
-define('CACHE_FOLDER', ''); # NOT IMPLEMENTED
+define('CACHE_FOLDER', '../tmp'); # NOT IMPLEMENTED
 define('JSON_CALLBACK', ''); # NOT IMPLEMENTED
 
 define('DB_USE', true);

@@ -18,7 +18,7 @@
 	if (isset($_GET['api']) && file_exists(APIS_FOLDER . "/{$_GET['api']}.php")) {
 		
 		define('API_MODULE', APIS_FOLDER . "/{$_GET['api']}.php");
-		
+
 	}
 	
 	# IF ALL IS SETUP THE BOOT UP
@@ -32,13 +32,11 @@
 		}
 		
 		#TODO IMPLEMENT CACHE SYSTEM
-		/*
 		# CHECK FOR CACHE FOLDER
 		if (defined('CACHE_FOLDER') && (strlen(CACHE_FOLDER) > 0)) {
 			include('includes/cache_handler.php');
 			$CacheHandler = new CacheHandler();
 		}
-		*/
 		
 		# LOAD THE API_RESPONSE OBJECT TO BE USED BY THE MODULE
 		include('includes/api_response.php');
@@ -49,13 +47,18 @@
 		
 		if (isset($_GET['jsoncallback'])) {
 		
-			echo $ApiResponse->get($_GET['jsoncallback']);
+			$response = $ApiResponse->get($_GET['jsoncallback']);
 			
 		} else {
 		
-			echo $ApiResponse->get();
+			$response =  $ApiResponse->get();
 			
 		}
+		
+		#$CacheHandler->set(md5(serialize($_GET)), $response);
+			
+		echo $response;
+			
 					
 	} else {
 		
